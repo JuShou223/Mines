@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import logo from '../../assets/logo.png'
 import mine from '../../assets/mine.png'
+import Difficulty from '../../container/Difficulty'
 import './homePage.styl'
 
 class Home extends Component {
     state = {}
     render() {
-        const {showbtn} = this.props
-        // const showbtn = true
+        const {showbtn,showDiff} = this.props
+        const {showDifficulty} = this.props
         return (
             <div className='container'>
                 <div className="header">
@@ -18,7 +19,11 @@ class Home extends Component {
                     <button className="btn">
                         <span className="text">新游戏</span>
                     </button>
-                    <button className="btn">
+                    <button className="btn" onClick={()=>{
+                        setTimeout(() => {
+                        showDifficulty(true)                            
+                        }, 400);
+                    }}>
                         <span className="text">更换难度</span>
                     </button>
                     <button className="btn" style={{display: showbtn ? 'block' : 'none'}}>
@@ -31,6 +36,7 @@ class Home extends Component {
                 <div className="bottom">
                     <img className="minepic" src={mine} alt=""/>
                 </div>
+                <Difficulty showDiff={showDiff} showDifficulty={showDifficulty}></Difficulty>
             </div>
         );
     }
