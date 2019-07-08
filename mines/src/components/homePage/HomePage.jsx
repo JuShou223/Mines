@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../assets/logo.png'
 import mine from '../../assets/mine.png'
+import { Link } from "react-router-dom";
 import Difficulty from '../../container/Difficulty'
 import './homePage.styl'
 
@@ -16,9 +17,11 @@ class Home extends Component {
                     <div className="title text">扫雷</div>
                 </div>
                 <div className="content">
+                    <Link to="/play">
                     <button className="btn">
                         <span className="text">新游戏</span>
                     </button>
+                    </Link>
                     <button className="btn" onClick={()=>{
                         setTimeout(() => {
                         showDifficulty(true)                            

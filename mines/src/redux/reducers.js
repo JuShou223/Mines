@@ -29,7 +29,15 @@ function showDiff(showDiff = false, action){
     }
 }
 
-function difficulty(difficulty = 'EASY', action){
+function difficulty(difficulty = {
+    type: 'EASY',
+    name: '初级',
+    mines: 10,
+    size: {
+        x: 9,
+        y: 9
+    }
+} , action){
     switch(action.type){
         case ActionTypes.SETDIFFICULTYBYDEGREE:
             return action.difficulty
@@ -37,9 +45,19 @@ function difficulty(difficulty = 'EASY', action){
             return difficulty
     }
 }
+
+function map (map = [], action){
+    switch(action.type){
+        case ActionTypes.CREATEMAP:
+            return action.map;
+        default:
+            return map;
+    }
+}
 export default combineReducers({
     startCilentY,
     degree,
     showDiff,
-    difficulty
+    difficulty,
+    map
 })
