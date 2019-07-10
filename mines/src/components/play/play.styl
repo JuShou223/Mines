@@ -46,15 +46,27 @@
         // .counter.minesNumber
         //     margin-left 1.066667rem /* 40/37.5 */
 .row{
+    overflow hidden
     display: flex
-    height: 40px
+    height 40px
+    // border-bottom 1px solid #000
+}
+.map_container{
+    border 1px solid #888
 }
 .grid{
     flex: 1
-    border: .026667rem /* 1/37.5 */ solid #000
-    background: linear-gradient(to right, #c9d6ff, #e2e2e2, #c9d6ff);
+    height 100%
+    display inline-block
+    position relative
+    border: 2px solid #888
     text-align center
+    background: linear-gradient(to right, #d3cce3, #e9e4f0);
     line-height 40px
+}
+.grid.open
+{
+    background: linear-gradient(to right, #c9d6ff, #e2e2e2, #c9d6ff);
 
 }
 .mine{

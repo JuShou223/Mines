@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../../assets/logo.png'
-import mine from '../../assets/mine.png'
+import mine from '../../assets/mine3.png'
 import { Link } from "react-router-dom";
 import Difficulty from '../../container/Difficulty'
 import './homePage.styl'
