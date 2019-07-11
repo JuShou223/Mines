@@ -6,6 +6,8 @@ import {
 import Home from '../container/HomePage'
 import '../assets/stylus/reset.styl'
 import Play from '../container/Play'
+import './app.styl'
+import PopUp from '../common/popup/PopUp'
 function App() {
   const height = window.innerHeight;
   return (
@@ -13,7 +15,7 @@ function App() {
       <div className="App" style={{height: height}}>
         <Switch>
           <Route path="/play" component={Play} />
-          <Route path="/home" component={Home} />
+          <Route path="/home" component={PopUp} />
           <Redirect from="/" to="/home" />
         </Switch>
       </div>

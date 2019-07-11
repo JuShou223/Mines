@@ -71,10 +71,10 @@ export function setDiff(degree) {
         difficulty = {
             type: 'MIDDLE',
             name: '中级',
-            mines: 19,
+            mines: 29,
             size: {
                 x: 12,
-                y: 9
+                y: 12
             }
         }
     }
@@ -82,10 +82,10 @@ export function setDiff(degree) {
         difficulty = {
             type: 'HIGH',
             name: '高级',
-            mines: 29,
+            mines: 39,
             size: {
-                x: 16,
-                y: 9
+                x: 14,
+                y: 14
             }
         }
     }
@@ -96,7 +96,7 @@ export function setDiff(degree) {
             mines: 49,
             size: {
                 x: 20,
-                y: 9
+                y: 14
             }
         }
     }
@@ -106,8 +106,8 @@ export function setDiff(degree) {
             name: '地狱级',
             mines: 99,
             size: {
-                x: 25,
-                y: 9
+                x: 20,
+                y: 14
             }
         }
     }
@@ -117,8 +117,8 @@ export function setDiff(degree) {
             name: '中国乒乓球级',
             mines: 149,
             size: {
-                x: 30,
-                y: 9
+                x: 20,
+                y: 14
             }
         }
     }

@@ -128,23 +128,7 @@ class PALY extends Component {
 			return data
 		}
 	}
-	gameOver = (status) => {
-		switch(status){
-			case 'fail':
-				this.gameFail();
-				return;
-			case 'success':
-				this.gameSuccess();
-				return;
-			default:
-				return;
-		}
-	}
-	gameFail=()=>{
-
-	}
-	gameSuccess=()=>{
-
+	gameover = (status) => {
 	}
 	handleOpenOne = (e1, map) => {
 		if ((e1.status === 'question' || e1.status === 'close') && e1.clickable) {
@@ -155,14 +139,13 @@ class PALY extends Component {
 					this.nullArray.push(e1);
 					break;
 				case 'mine':
-					this.gameOver('fail');
-					return;
+					// this.gameover('fail');
+					break;
 				default:
 					break;
 			}
 		}
-		if (e1.type !== 'null')
-			e1.clickable = true
+		e1.clickable = true
 		this.setState({
 			mapstate: map
 		})
@@ -243,8 +226,12 @@ class PALY extends Component {
 		}
 	}
 	renderMap = (map) => {
+		const windowWidth = window.innerWidth;
+		const { difficulty } = this.props;
+		const gridwidth = (windowWidth/(difficulty.size.y+1))
 		return (
-			<div className="map_container">
+			<>
+			<div className="imask"></div>
 				{
 					map.map((e, index) => {
 						return (
@@ -252,13 +239,13 @@ class PALY extends Component {
 								{
 									e.map((e1, index) => {
 										return (
-											<div key={index} className={`grid ${e1.status === 'open' ? 'open' : ''}`}
+											<div key={index} style={{width: gridwidth,height: gridwidth}} className={`grid ${e1.status === 'open' ? 'open' : ''}`}
 												onTouchStart={() => {
 													console.log(e1)
-													// 当长按超过0.5秒就改变格子的状态
+													// 当长按超过0.2秒就改变格子的状态
 													this.timeout = setTimeout(() => {
 														this.handleChangeStatus(e1, map)
-													}, 500);
+													}, 200);
 													if (this.checkFlag(e1, map)) {
 														onDoubleTouch(() => { this.handleOpenRound(e1, map) }).bind(this)()
 													}
@@ -266,14 +253,9 @@ class PALY extends Component {
 												}}
 												onTouchEnd={() => {
 													clearTimeout(this.timeout)
-													if (e1.type !== "null") {
-														this.handleOpenOne(e1, map)
-													} else {
-														if (e1.clickable) {
-															this.handleOpenOne(e1, map)
-															this.handleOpenRound(this.nullArray.shift(), map)
-														}
-													}
+													this.handleOpenOne(e1, map)
+													if (this.nullArray.length > 0)
+														this.handleOpenRound(this.nullArray.shift(), map)
 												}}
 											>
 												<img src={question} className="mine" style={{ display: e1.status === 'question' ? 'inline-block' : 'none' }} alt="" />
@@ -288,15 +270,14 @@ class PALY extends Component {
 						)
 					})
 				}
-			</div>
+			</>
 		)
 	}
-	handlePause=(timePause)=>{
+	handlePause = (timePause) => {
 		timePause = !timePause;
-		if(timePause){
+		if (timePause) {
 			clearInterval(this.timecounter)
-		}else{
-			console.log('aa')
+		} else {
 			this.setTime()
 		}
 		this.setState({
