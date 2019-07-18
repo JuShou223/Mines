@@ -1,16 +1,18 @@
 @font-face {
   font-family: text;
-  src: url(../../assets/huayun.ttf);
+  src: url(../../assets/font/huayun.ttf);
 }
+.translate-enter
+  transform: scale(0)
+  &.translate-enter-active
+    transition: transform 0.5s ease-in-out
+    transform: scale(1)
 .popup_container .popUp
 	background-color: #c8d3e0
 	border-radius: 10px
 	overflow hidden
 	padding: 20px
 	box-shadow: 0 0 10px #888
-.mask1
-	background-color: rgb(0,0,0)
-	opacity 0.5
 .popup_container
   width 100%
   height 100%
@@ -21,7 +23,11 @@
   right 0
   .popUp
     margin: 200px 30px
-		.header
+		.warning
+			font-size 20px
+			width: 200px
+			margin 0 auto	
+		.title
 			font-size 50px
 			font-family: text
 			text-align center
@@ -34,6 +40,8 @@
 			.content
 				font-size 20px
 				overflow hidden
+				line-height 30px
+				height 30px
 				.name
 					background-image:-webkit-linear-gradient(bottom, #0f0c29, #302b63, #24243e);
 					-webkit-background-clip:text;
@@ -42,13 +50,19 @@
 					text-align justify
 					float left
 					overflow hidden
-					height 30px
-					line-height 30px
 				.name:after
 					content: ''
 					width: 100%
 					display inline-block
 					height 0
+				.value
+					font-weight bold
+					text-align center
+					background-image:-webkit-linear-gradient(bottom,#1488cc, #2b32b2);
+					-webkit-background-clip:text;
+					-webkit-text-fill-color:transparent;
+					float right 
+					width: 130px;
 		.bottom
 			overflow hidden
 			.btn2

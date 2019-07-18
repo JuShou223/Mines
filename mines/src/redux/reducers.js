@@ -1,27 +1,26 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 import * as ActionTypes from './actionTypes'
-
-function startCilentY(startCilentY = 0, action){
-    switch(action.type){
-        case ActionTypes.GETSTARTCILENTY:
-            return action.startCilentY
+import difficultiesInit from '../creatGameBoard/difficulties'
+function difficulties(difficulties = difficultiesInit, action) {
+    switch (action.type) {
+        case ActionTypes.UPDATE_DIFFICULTIES:
+            return action.difficulties;
         default:
-            return startCilentY
+            return difficulties;
     }
 }
 
-
-function degree(degree = 0, action){
+function status(status={type: 'INGAME'}, action){
     switch(action.type){
-        case ActionTypes.GETDEGREE:
-            return action.degree
+        case ActionTypes.SETGAMESTATUS:
+            return action.status;
         default:
-            return degree
+            return status;
     }
 }
 
-function showDiff(showDiff = false, action){
-    switch(action.type){
+function showDiff(showDiff = false, action) {
+    switch (action.type) {
         case ActionTypes.SHOWDIFFICULTY:
             return action.showDiff
         default:
@@ -29,35 +28,46 @@ function showDiff(showDiff = false, action){
     }
 }
 
-function difficulty(difficulty = {
-    type: 'EASY',
-    name: '初级',
-    mines: 10,
-    size: {
-        x: 9,
-        y: 9
+function showPopUp(showPopUp = false, action) {
+    switch (action.type) {
+        case ActionTypes.SHOW_POPUP:
+            return action.showPopUp;
+        default:
+            return showPopUp
     }
-} , action){
-    switch(action.type){
-        case ActionTypes.SETDIFFICULTYBYDEGREE:
+}
+
+function time(time = {hour: 0,minute: 0, second: 0}, action){
+    switch (action.type){
+        case ActionTypes.TIMECOUNTER:
+            return action.time
+        default:
+            return time;
+    }
+}
+function difficulty(difficulty = 'Easy', action) {
+    switch (action.type) {
+        case ActionTypes.CHANGE_DIFFICULTY:
             return action.difficulty
         default:
             return difficulty
     }
 }
 
-function map (map = [], action){
-    switch(action.type){
-        case ActionTypes.CREATEMAP:
-            return action.map;
+function gameBoard(gameBoard = null, action) {
+    switch (action.type) {
+        case ActionTypes.CREATE_MAP:
+            return action.gameBoard;
         default:
-            return map;
+            return gameBoard;
     }
 }
 export default combineReducers({
-    startCilentY,
-    degree,
     showDiff,
     difficulty,
-    map
+    gameBoard,
+    difficulties,
+    showPopUp,
+    time,
+    status
 })

@@ -1,17 +1,21 @@
 import Play from '../components/play/Play'
-import { createMap } from '../redux/action'
 import { connect } from "react-redux";
+import { gameHistory, setStatus} from '../redux/action'
+
 const mapStateToProps = state => {
     return {
-        map: state.map,
+        gameBoard: state.gameBoard,
         difficulty: state.difficulty
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-        updateMap:(map)=>{
-            dispatch(createMap(map))
+        upadteGameHistory: (gameBoard) => {
+            dispatch(gameHistory(gameBoard))
+        },
+        setGameStatus: (status) => {
+            dispatch(setStatus(status))
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Play)
+export default connect(mapStateToProps, mapDispatchToProps)(Play)

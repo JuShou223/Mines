@@ -1,9 +1,9 @@
 import HomePage from "../components/homePage/HomePage";
 import {connect} from 'react-redux';
-import {showDiff} from '../redux/action'
+import {showDiff, gameHistory} from '../redux/action'
 const mapStateToProps = state => {
     return {
-        showDiff: state.showDiff
+        gameBoard: state.gameBoard
     }
 }
 
@@ -11,7 +11,10 @@ const mapDispatchToProps = dispatch => {
     return {
         showDifficulty:(bool)=>{
             dispatch(showDiff(bool))
-        }
+        },
+        upadteGameHistory: (gameBoard) => {
+            dispatch(gameHistory(gameBoard))
+        },
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(HomePage)
