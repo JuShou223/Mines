@@ -5,12 +5,15 @@ class Audio extends Component {
   state = { 
    }
   componentWillReceiveProps=(next)=>{
-    const {type} = next.status;
+    const {type} = next.bgm_action;
     this.play(type)
   }
-  play = (action) => {
+  play = (bgm_action) => {
     this.replay()
-    switch (action) {
+    switch (bgm_action) {
+      case 'CLICK':
+        this.refs.click.play();
+        break;
       case 'SHOWONE':
         this.refs.click.play()
         break;

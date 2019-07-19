@@ -14,7 +14,8 @@ const mapDispatchToProps = dispatch => {
         },
         upadteGameHistory: (gameBoard) => {
             dispatch(gameHistory(gameBoard))
-        },
+        }
+        
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(HomePage)

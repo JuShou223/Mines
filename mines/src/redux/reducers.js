@@ -10,12 +10,12 @@ function difficulties(difficulties = difficultiesInit, action) {
     }
 }
 
-function status(status={type: 'INGAME'}, action){
+function bgm_action(bgm_action={type: 'INGAME'}, action){
     switch(action.type){
-        case ActionTypes.SETGAMESTATUS:
-            return action.status;
+        case ActionTypes.SETBGMACTION:
+            return action.bgm_action;
         default:
-            return status;
+            return bgm_action;
     }
 }
 
@@ -37,14 +37,6 @@ function showPopUp(showPopUp = false, action) {
     }
 }
 
-function time(time = {hour: 0,minute: 0, second: 0}, action){
-    switch (action.type){
-        case ActionTypes.TIMECOUNTER:
-            return action.time
-        default:
-            return time;
-    }
-}
 function difficulty(difficulty = 'Easy', action) {
     switch (action.type) {
         case ActionTypes.CHANGE_DIFFICULTY:
@@ -68,6 +60,5 @@ export default combineReducers({
     gameBoard,
     difficulties,
     showPopUp,
-    time,
-    status
+    bgm_action
 })

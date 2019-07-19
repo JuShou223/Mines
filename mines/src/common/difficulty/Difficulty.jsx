@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CSSTransition } from "react-transition-group";
+import MButton from '../m_button/MButton'
 import './difficulty.styl'
 class Difficulty extends Component {
   state = {}
@@ -18,13 +19,13 @@ class Difficulty extends Component {
             {
               difficultiesKeys.map(key => {
                 return (
-                  <div className="difficulty btn2" key={key} onClick={()=>{
+                  <MButton className="difficulty btn2" key={key} onClick={()=>{
                     setDifficulty(key)
                     showDifficulty(false)
                     setPopUp();
                   }}>
                     {difficulties[key].name}
-                  </div>
+                  </MButton>
                 )
               })
             }

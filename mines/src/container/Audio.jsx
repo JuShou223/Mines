@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-      status: state.status
+    bgm_action: state.bgm_action
   }
 }
 const mapDispatchToProps = dispatch => {

@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-import Audio from '../../container/Audio'
+import images from '../../assets/image/index'
 import './play.styl'
-import mine4 from '../../assets/image/mine4.png'
-import flag from '../../assets/image/flag3.png'
-import question from '../../assets/image/question.png'
-import error from '../../assets/image/error.png'
-import pause from '../../assets/image/pause.png'
-import home from '../../assets/image/home.png'
 import { Link } from 'react-router-dom'
-import start from '../../assets/image/start.png'
 import { createGameBoard } from '../../creatGameBoard/createGameBoard'
 import PopUp from '../../container/PopUp'
 class PALY extends Component {
@@ -19,7 +12,7 @@ class PALY extends Component {
 	}
 	componentWillUnmount = () => {
 		const { gameBoard } = this.props
-		if(gameBoard){
+		if (gameBoard) {
 			const { upadteGameHistory } = this.props;
 			const { state_gameBoard } = this.state;
 			state_gameBoard.clearListener();
@@ -56,8 +49,8 @@ class PALY extends Component {
 		this.startClock(gameBoard)
 	}
 	statusChanged = (action) => {
-		const {setGameStatus} = this.props;
-		setGameStatus({type:action})
+		const { setBgmAction } = this.props;
+		setBgmAction({ type: action })
 		const { state_gameBoard } = this.state;
 		this.setState({
 			state_gameBoard
@@ -90,29 +83,24 @@ class PALY extends Component {
 
 
 	render() {
-		const { state_gameBoard, timePause, showPopUp} = this.state
+		const { state_gameBoard, showPopUp } = this.state
 		const windowWidth = window.innerWidth;
 		const gridwidth = (windowWidth / (state_gameBoard.minefield[0].length + 1))
 		return (
-			<div className="play_container">
+			<div className="play_container" style={{backgroundImage: `url(${images.normal.backgroundIMG})`}}>
 				<div className="header">
 					<Link to="/home">
-						<img className="home_btn" src={home} alt="" />
+						<img className="home_btn" src={images.normal.home} alt="" />
 					</Link>
 					<div className="counter time">
-						<div className="show_time">
+						<img className="icon" src={images.normal.clock} alt=""/>
+						<div className="show_time clock">
 							{state_gameBoard.clock}
 						</div>
-						<img className="icon" src={timePause ? start : pause} alt="" onClick={() => {
-							if (!timePause) {
-								this.pauseClock()
-							} else {
-								this.startClock()
-							}
-							this.setState({
-								timePause: !timePause
-							})
-						}} />
+						<img className="icon" src={images.normal.flag} alt=""/>
+						<div className="show_time flag">
+							{state_gameBoard.getLeftFlag()}
+						</div>
 					</div>
 				</div>
 				<div className="map">
@@ -133,10 +121,10 @@ class PALY extends Component {
 														state_gameBoard.onTouchEnd(x, y)
 													}}
 												>
-													<img src={mine4} alt="" className="mine" style={{ display: (e1.type === 'mine' && e1.status === 'show') ? 'block' : 'none' }} />
-													<img src={question} className="mine" style={{ display: e1.tag === 'uncertain' ? 'inline-block' : 'none' }} alt="" />
-													<img src={flag} className="mine" style={{ display: e1.tag === 'flag' ? 'inline-block' : 'none' }} alt="" />
-													<img src={error} className="mine" style={{ display: (e1.type !== 'mine' && e1.status === 'show' && e1.tag === 'flag') ? 'block' : 'none' }} />
+													<img src={images.normal.mine} alt="" className="mine" style={{ display: (e1.type === 'mine' && e1.status === 'show') ? 'block' : 'none' }} />
+													<img src={images.normal.question} className="mine" style={{ display: e1.tag === 'uncertain' ? 'inline-block' : 'none' }} alt="" />
+													<img src={images.normal.flag} className="mine" style={{ display: e1.tag === 'flag' ? 'inline-block' : 'none' }} alt="" />
+													<img src={images.normal.error} className="mine" style={{ display: (e1.type !== 'mine' && e1.status === 'show' && e1.tag === 'flag') ? 'block' : 'none' }} />
 													<span className="number" style={{ display: (e1.type === "number" && e1.status === 'show') ? 'inline-block' : 'none', lineHeight: gridwidth + 'px' }}>{e1.value}</span>
 												</div>
 											)
@@ -147,7 +135,6 @@ class PALY extends Component {
 						})
 					}
 				</div>
-				<Audio></Audio>
 				<PopUp type="gameover" showPopUp={showPopUp} replay={this.replay} clock={state_gameBoard.clock} leftMines={state_gameBoard.getLeftMine()} leftFlag={state_gameBoard.getLeftFlag()}></PopUp>
 			</div>
 		);

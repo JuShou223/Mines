@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { CSSTransition } from "react-transition-group";
+import MButton from '../m_button/MButton'
 import './popup.styl'
 
 class PopUp extends Component {
@@ -27,7 +28,7 @@ class PopUp extends Component {
 		}
 	}
 	render() {
-		const { leftMines, difficulty, difficulties, clock, replay, type, openNewGame, hidePopUp } = this.props
+		const { leftMines, difficulty, difficulties, clock, replay, type, openNewGame, hidePopUp} = this.props
 		const { showPopUp } = this.state;
 		return (
 			<CSSTransition in={showPopUp} timeout={300} classNames="translate">
@@ -57,17 +58,17 @@ class PopUp extends Component {
 						</div>
 						<div className="bottom">
 							<Link to='/home'>
-								<div className="btn2 fl">
+								<MButton className="btn2 fl">
 									<span className="text">返回主页</span>
-								</div>
+								</MButton>
 							</Link>
-							<div className="btn2 fr" onClick={
+							<MButton className="btn2 fr" onClick={
 								() => {
 									replay()
 								}
 							}>
 								<span className="text">重新开始</span>
-							</div>
+							</MButton>
 						</div>
 					</div>
 					<div className="popUp" style={{ display: type === 'check' ? 'block' : 'none' }}>
@@ -75,18 +76,18 @@ class PopUp extends Component {
 							当前有游戏未完成，确定重新开始游戏?
 						</div>
 						<div className="bottom">
-							<div className="btn2 fl" onClick={() => {
+							<MButton className="btn2 fl" onClick={() => {
 								openNewGame()
 							}} >
 								<span className="text">确定</span>
-							</div>
-							<div className="btn2 fr" onClick={
+							</MButton>
+							<MButton className="btn2 fr" onClick={
 								() => {
 									hidePopUp()
 								}
 							}>
 								<span className="text">取消</span>
-							</div>
+							</MButton>
 						</div>
 					</div>
 				</div>

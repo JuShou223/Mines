@@ -1,13 +1,14 @@
 import difficulties from './difficulties';
 import { createMinesPosition, createMinefield } from './createMineField.js';
+
 export function createGameBoard(difficulty) {
   const { mines, size } = difficulties[difficulty];
   const { row, col } = size;
-  const minesPosition = createMinesPosition(mines, row, col)
+  const minesPosition = createMinesPosition(mines, row, col);
   const minefield = createMinefield(minesPosition, row, col);
   const clock = 0;
   const flagPosition = [];
-  const listener = []; //监听者
+  const listener = [];
   let dbclicktime = 0;
   let showNum = 0;
   let lock = false;
@@ -19,7 +20,7 @@ export function createGameBoard(difficulty) {
   let gameStatus = 'INGAME';
 
   function subscribe(listen) {
-    listener.push(listen) //订阅发布者
+    listener.push(listen)
   }
 
   function setLastTarget(x, y) {
@@ -106,10 +107,10 @@ export function createGameBoard(difficulty) {
         case 'mine':
           gameStatus = 'GAMELOSE';
           lastTarget = minefield[x][y];
-          setLastTarget(x, y)
+          setLastTarget(x, y);
           break;
         case 'blank':
-          showRound(x, y)
+          showRound(x, y);
           break;
         default:
           break;

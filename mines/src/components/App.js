@@ -6,6 +6,7 @@ import {
 import Home from '../container/HomePage'
 import '../assets/stylus/reset.styl'
 import Play from '../container/Play'
+import Audio from '../container/Audio'
 import './app.styl'
 function App() {
   const height = window.innerHeight;
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" component={Home} />
           <Redirect from="/" to="/home" />
         </Switch>
+        <Audio></Audio>
       </div>
     </Router>
   );

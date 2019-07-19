@@ -1,94 +1,83 @@
 @font-face {
-    font-family: numbers;
-    src: url(../../assets/font/DS-DIGIB.TTF);
+	font-family: numbers;
+	src: url(../../assets/font/DS-DIGIB.TTF);
 }
 .play_container
-    width: 100%
-    height 100%
-    background-image url(../../assets/image/bg6.jpg)
-    position relative
-    background-size contain
-    // background: linear-gradient(to right, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    .header
-        position relative
-        // text-align center
-        height 2.933333rem /* 110/37.5 */
-        background: linear-gradient(to top, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        .home_btn
-            position: absolute
-            top: 0
-            left 0
-            margin .266667rem /* 10/37.5 */ 0 0 .266667rem /* 10/37.5 */
-            width: 2.4rem /* 90/37.5 */
-            height 2.4rem /* 90/37.5 */
-        .counter
-            margin-top .266667rem /* 10/37.5 */
-            display inline-block
-            float right
-            .icon 
-                width: 1.866667rem /* 70/37.5 */
-                height 1.866667rem /* 70/37.5 */
-                vertical-align: middle
-                margin 0 .266667rem /* 10/37.5 */
-            .show_time
-                background: linear-gradient(to right, #000000, #434343);
-                font-family: numbers;
-                display inline-block
-                color: #fff
-                text-align center
-                border-radius: .266667rem /* 10/37.5 */
-                line-height 2.4rem /* 90/37.5 */
-                // margin-top .266667rem /* 10/37.5 */    
-                font-size 1.6rem /* 60/37.5 */
-                box-shadow: 0 0 5px #888;
-                width: 6.666667rem /* 250/37.5 */
-                height: 2.375rem
-                vertical-align: middle
-.row{
-    overflow hidden
-    display: flex
-    // height 40px
-    box-sizing: border-box
-}
-
-.map{
-    position: absolute
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%)
-    background: radial-gradient( #1e9600, #fff200)
-    border-radius: 5px;
-    overflow hidden
-}
-.grid{
-    flex: 1
-    border-radius: 5px;
-    overflow hidden
-    position relative
-    text-align center
-    background-size cover
-    background-image url(../../assets/image/closegrid.png)
-    margin 1px
-}
-
-.grid.open
-{
-    background: linear-gradient(to right, #d3cce3, #e2e2e2, #d3cce3);
-
-}
-.mine{
-    position absolute
-    top 50%
-    left 50%
-    transform: translate(-50%,-50%)
-    width: 70%
-    height 70%
-}
-
-.number {
-    font-weight bold
-    font-size 1.333333rem /* 50/37.5 */
-    background-image:-webkit-linear-gradient(bottom,  #667db6, #0082c8, #0082c8, #667db6); 
-    -webkit-background-clip:text; 
-    -webkit-text-fill-color:transparent;  
-}
+	width: 100%
+	height 100%
+	position relative
+	background-size contain
+	.header
+		position relative
+		height 2.933333rem /* 110/37.5 */
+		background: linear-gradient(to top, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		.home_btn
+			position: absolute
+			top: 0
+			left 0
+			margin .266667rem /* 10/37.5 */ 0 0 .266667rem /* 10/37.5 */
+			width: 2.4rem /* 90/37.5 */
+			height 2.4rem /* 90/37.5 */
+		.counter
+			margin-top .266667rem /* 10/37.5 */
+			display inline-block
+			float right
+			.icon 
+				width: 1.866667rem /* 70/37.5 */
+				height 1.866667rem /* 70/37.5 */
+				vertical-align: middle
+				margin 0 .266667rem /* 10/37.5 */
+			.show_time
+				background: linear-gradient(to right, #000000, #434343);
+				font-family: numbers;
+				display inline-block
+				color: #fff
+				text-align center
+				border-radius: .266667rem /* 10/37.5 */
+				line-height 2.4rem /* 90/37.5 */
+				font-size 1.6rem /* 60/37.5 */
+				box-shadow: 0 0 5px #888;
+				width: 6.666667rem /* 250/37.5 */
+				height: 2.375rem
+				vertical-align: middle
+			.show_time.flag
+				width: 4rem /* 150/37.5 */
+				margin-right: .533333rem /* 20/37.5 */
+			.show_time.clock
+				margin-right: 1.333333rem /* 50/37.5 */
+	.map
+		position: absolute
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%)
+		background: radial-gradient( #1e9600, #fff200)
+		border-radius: 5px;
+		overflow hidden
+		.row
+			overflow hidden
+			display: flex
+			box-sizing: border-box
+			.grid
+				flex: 1
+				border-radius: 5px;
+				overflow hidden
+				position relative
+				text-align center
+				background-size cover
+				background-image url(../../assets/image/normal/grid.png)
+				margin 1px
+				.mine
+					position absolute
+					top 50%
+					left 50%
+					transform: translate(-50%,-50%)
+					width: 70%
+					height 70%
+				.number
+					font-weight bold
+					font-size 1.333333rem /* 50/37.5 */
+					background-image:-webkit-linear-gradient(bottom,  #667db6, #0082c8, #0082c8, #667db6); 
+					-webkit-background-clip:text; 
+					-webkit-text-fill-color:transparent;  
+			.grid.open
+				background: linear-gradient(to right, #d3cce3, #e2e2e2, #d3cce3);

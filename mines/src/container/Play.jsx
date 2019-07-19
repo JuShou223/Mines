@@ -1,6 +1,6 @@
 import Play from '../components/play/Play'
 import { connect } from "react-redux";
-import { gameHistory, setStatus} from '../redux/action'
+import { gameHistory, setBgm} from '../redux/action'
 
 const mapStateToProps = state => {
     return {
@@ -13,8 +13,8 @@ const mapDispatchToProps = dispatch => {
         upadteGameHistory: (gameBoard) => {
             dispatch(gameHistory(gameBoard))
         },
-        setGameStatus: (status) => {
-            dispatch(setStatus(status))
+        setBgmAction: (bgm_action) => {
+            dispatch(setBgm(bgm_action))
         }
     }
 }

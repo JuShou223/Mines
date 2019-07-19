@@ -27,9 +27,9 @@ export function gameHistory(gameBoard){
     }
 }
 
-export function setStatus(status){
+export function setBgm(bgm_action){
     return {
-        type: ActionTypes.SETGAMESTATUS,
-        status
+        type: ActionTypes.SETBGMACTION,
+        bgm_action
     }
 }

@@ -1,68 +1,70 @@
 import React, { Component } from 'react';
-import logo from '../../assets/image/logo.png'
-import mine from '../../assets/image/mine3.png'
+import images from '../../assets/image/index'
 import Difficulty from '../../container/Difficulty'
 import PopUp from '../../container/PopUp'
+import MButton from '../../common/m_button/MButton'
 import './homePage.styl'
 
 class Home extends Component {
     state = {
         showPopUp: false
     }
-    setPopUp = () =>{
-        console.log('123')
-        const {gameBoard} = this.props
-        if(gameBoard){
+    setPopUp = () => {
+        const { gameBoard } = this.props
+        if (gameBoard) {
             this.setState({
                 showPopUp: true
             })
-        }      
+        }
     }
-    hidePopUp = () =>　{
+    hidePopUp = () => {
         this.setState({
             showPopUp: false
         })
     }
-    openNewGame=()=>{
+    openNewGame = () => {
         const { upadteGameHistory } = this.props;
         upadteGameHistory(null);
         this.props.history.push('/play')
     }
-    openOldGame = ()=>{
+    openOldGame = () => {
         this.props.history.push('/play')
     }
     render() {
-        const {gameBoard} = this.props
-        const {showDifficulty} = this.props;
-        const {showPopUp} = this.state
-        console.log(showPopUp)
+        console.log(images)
+        const { gameBoard } = this.props
+        const { showDifficulty} = this.props;
+        const { showPopUp } = this.state
         return (
-            <div className='home_container'>
+            <div className='home_container' style={{backgroundImage: `url(${images.normal.backgroundIMG})`}}>
                 <div className="header">
-                    <img className="logo" src={logo} alt="" />
+                    <img className="logo" src={images.normal.logo} alt="" />
                     <div className="title text">扫雷</div>
                 </div>
-                <div className="content">
-                    <button className="btn" onClick={()=>{this.openNewGame()}}>
+                <div className="home_content">
+                    <MButton className="btn" onClick={() => {
+                        this.openNewGame()
+                    }}>
                         <span className="text" >新游戏</span>
-                    </button>
-                    <button className="btn" style={{display: gameBoard ? 'block' : 'none'}}
-                    onClick={()=>{this.openOldGame()}}>
+                    </MButton>
+                    <MButton className="btn" style={{ display: gameBoard ? 'block' : 'none' }}
+                        onClick={() => {
+                            this.openOldGame()
+                        }}>
                         <span className="text">继续游戏</span>
-                    </button>
-                    <button className="btn" onClick={()=>{
-                        setTimeout(() => {
-                        showDifficulty(true)                            
-                        }, 400);
+                    </MButton>
+                    <MButton className="btn" onClick={() => {
+                        showDifficulty(true)
                     }}>
                         <span className="text">更换难度</span>
-                    </button>
-                    <button className="btn">
+                    </MButton>
+                    <MButton className="btn" onClick={() => {
+                    }}>
                         <span className="text">游戏玩法</span>
-                    </button>
+                    </MButton>
                 </div>
                 <div className="bottom1">
-                    <img className="minepic" src={mine} alt=""/>
+                    <img className="minepic" src={images.normal.bottomLogo} alt="" />
                 </div>
                 <Difficulty setPopUp={this.setPopUp}></Difficulty>
                 <PopUp type="check" showPopUp={showPopUp} openNewGame={this.openNewGame} hidePopUp={this.hidePopUp}></PopUp>
