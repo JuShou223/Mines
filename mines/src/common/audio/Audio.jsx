@@ -23,13 +23,13 @@ class Audio extends Component {
       case 'GAMELOSE':
         setTimeout(() => {
           this.refs.fail.play()
-        }, 1800);
+        }, 1500);
         this.refs.touchmine.play()
         break;
       case 'GAMESUCCESS':
           setTimeout(() => {
             this.refs.success.play()
-          }, 1800);
+          }, 1500);
         this.refs.showround.play()
         break;
       case 'CHANGETAG':
@@ -62,7 +62,7 @@ class Audio extends Component {
   }
   render() { 
     return ( 
-      <div>
+      <div style={{opacity: 0}}>
         <audio src={audioMp3.click} preload="preload" ref="click"></audio>
         <audio src={audioMp3.showone} preload="preload" ref="showone"></audio>
         <audio src={audioMp3.showround} preload="preload" ref="showround"></audio>

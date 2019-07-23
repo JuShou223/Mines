@@ -9,10 +9,10 @@ import Play from '../container/Play'
 import Audio from '../container/Audio'
 import './app.styl'
 function App() {
-  const height = window.innerHeight;
+  const height = window.innerHeight
   return (
     <Router>
-      <div className="App" style={{height: height}}>
+      <div className="App" style={{height: height}} >
         <Switch>
           <Route path="/play" component={Play} />
           <Route path="/home" component={Home} />

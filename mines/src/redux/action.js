@@ -1,12 +1,12 @@
 import * as ActionTypes from './actionTypes';
 
-export function showPopUp (bool) {
+export function showPopUp(bool) {
     return {
         type: ActionTypes.SHOW_POPUP,
         showPopUp: bool
     }
 }
-export function changeDifficulty(difficulty){
+export function changeDifficulty(difficulty) {
     return {
         type: ActionTypes.CHANGE_DIFFICULTY,
         difficulty
@@ -20,16 +20,30 @@ export function showDiff(bool) {
     }
 }
 
-export function gameHistory(gameBoard){
+export function gameHistory(gameBoard) {
     return {
         type: ActionTypes.CREATE_MAP,
         gameBoard
     }
 }
 
-export function setBgm(bgm_action){
+export function setBgm(bgm_action) {
     return {
         type: ActionTypes.SETBGMACTION,
         bgm_action
+    }
+}
+
+export function showGamePlay(showGamePlay){
+    return {
+        type: ActionTypes.SHOW_GAMEPLAY,
+        showGamePlay
+    }
+}
+
+export function showTip(showTip){
+    return {
+        type: ActionTypes.SHOW_TIP,
+        showTip
     }
 }

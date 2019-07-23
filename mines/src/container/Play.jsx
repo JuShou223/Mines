@@ -1,11 +1,13 @@
 import Play from '../components/play/Play'
 import { connect } from "react-redux";
-import { gameHistory, setBgm} from '../redux/action'
+import { gameHistory, setBgm, showPopUp } from '../redux/action'
 
 const mapStateToProps = state => {
     return {
         gameBoard: state.gameBoard,
-        difficulty: state.difficulty
+        difficulty: state.difficulty,
+        showPopUp: state.showPopUp,
+        difficulties: state.difficulties
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -15,6 +17,9 @@ const mapDispatchToProps = dispatch => {
         },
         setBgmAction: (bgm_action) => {
             dispatch(setBgm(bgm_action))
+        },
+        changeShowPopUp: (bool) => {
+            dispatch(showPopUp(bool))
         }
     }
 }

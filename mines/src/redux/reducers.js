@@ -54,11 +54,30 @@ function gameBoard(gameBoard = null, action) {
             return gameBoard;
     }
 }
+function showGamePlay(showGamePlay = false, action){
+    switch (action.type){
+        case ActionTypes.SHOW_GAMEPLAY:
+            return action.showGamePlay;
+        default:
+            return showGamePlay
+    }
+}
+
+function showTip (showTip = true, action){
+    switch (action.type){
+        case ActionTypes.SHOW_TIP:
+            return action.showTip;
+        default:
+            return showTip
+    }
+}
 export default combineReducers({
     showDiff,
     difficulty,
     gameBoard,
     difficulties,
     showPopUp,
-    bgm_action
+    bgm_action,
+    showGamePlay,
+    showTip
 })
